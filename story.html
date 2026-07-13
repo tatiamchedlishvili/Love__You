@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+
+<meta charset="UTF-8">
+<title>💗💗💗</title>
+
+<style>
+
+body{
+margin:0;
+min-height:100vh;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(135deg,#fbc2eb,#a6c1ee,#ffd6df);
+background-size:300% 300%;
+animation:bg 12s infinite alternate;
+overflow-x:hidden;
+color:white;
+}
+
+
+@keyframes bg{
+0%{background-position:left;}
+100%{background-position:right;}
+}
+
+
+
+/* FLOATING PHOTOS */
+
+.photo{
+
+position:fixed;
+
+width:180px;
+height:220px;
+
+object-fit:cover;
+
+border-radius:20px;
+
+opacity:.65;
+
+filter:blur(.3px);
+
+box-shadow:
+0 0 30px rgba(255,255,255,.5);
+
+animation:floatPhoto 8s infinite alternate;
+
+}
+
+
+
+.p1{
+top:8%;
+left:5%;
+transform:rotate(-8deg);
+}
+
+.p2{
+top:20%;
+right:5%;
+transform:rotate(7deg);
+}
+
+.p3{
+bottom:10%;
+left:8%;
+transform:rotate(5deg);
+}
+
+.p4{
+bottom:15%;
+right:10%;
+transform:rotate(-7deg);
+}
+
+
+
+@keyframes floatPhoto{
+
+from{
+transform:translateY(0) rotate(5deg);
+}
+
+to{
+transform:translateY(-30px) rotate(-5deg);
+}
+
+}
+
+
+
+
+
+/* MAIN */
+
+.container{
+
+width:80%;
+
+margin:auto;
+
+padding-top:70px;
+
+text-align:center;
+
+}
+
+
+
+.title{
+
+font-size:60px;
+
+font-family:cursive;
+
+text-shadow:
+0 0 20px white;
+
+animation:title 2s forwards;
+
+}
+
+
+
+@keyframes title{
+
+from{
+opacity:0;
+transform:translateY(-50px);
+}
+
+to{
+opacity:1;
+}
+
+}
+
+
+
+
+.subtitle{
+
+font-size:22px;
+
+margin-top:20px;
+
+opacity:.9;
+
+}
+
+
+
+/* TIMELINE */
+
+
+.timeline{
+
+position:relative;
+
+margin:100px auto;
+
+width:5px;
+
+background:white;
+
+min-height:900px;
+
+box-shadow:
+0 0 20px white;
+
+}
+
+
+
+.card{
+
+width:350px;
+
+padding:25px;
+
+background:rgba(255,255,255,.18);
+
+backdrop-filter:blur(10px);
+
+border-radius:25px;
+
+position:relative;
+
+margin:100px 0;
+
+box-shadow:
+0 0 30px rgba(255,255,255,.3);
+
+}
+
+
+
+.left{
+
+right:380px;
+
+}
+
+
+.right{
+
+left:40px;
+
+}
+
+
+
+
+.card h2{
+
+font-family:cursive;
+
+font-size:28px;
+
+}
+
+
+
+.card p{
+
+font-size:18px;
+
+line-height:1.7;
+
+}
+
+
+
+
+
+/* HEARTS */
+
+.heart{
+
+position:fixed;
+
+pointer-events:none;
+
+animation:heart 1s forwards;
+
+}
+
+
+
+@keyframes heart{
+
+from{
+opacity:1;
+transform:scale(1);
+}
+
+to{
+opacity:0;
+transform:scale(2) translateY(-50px);
+}
+
+}
+
+
+
+
+/* BUTTON */
+
+
+button{
+
+margin:60px;
+
+padding:18px 45px;
+
+border:none;
+
+border-radius:40px;
+
+background:white;
+
+color:#ff4d6d;
+
+font-size:20px;
+
+cursor:pointer;
+
+}
+
+
+button:hover{
+
+transform:scale(1.1);
+
+}
+
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+
+<img src="2p.jpg" class="photo p1">
+<img src="3p.jpg" class="photo p2">
+<img src="4p.jpg" class="photo p3">
+<img src="5p.jpg" class="photo p4">
+
+
+
+
+
+<div class="container">
+
+
+<div class="title">
+
+You & Me ❤️
+
+</div>
+
+
+<div class="subtitle">
+
+
+</div>
+
+
+
+
+<div class="timeline">
+
+
+
+<div class="card left">
+
+<h2>❤️</h2>
+
+<p>
+ჩემი პირველი და ნამდვილი სიყვარული ხარ❤️
+</p>
+
+</div>
+
+
+
+
+<div class="card right">
+
+<h2> 💌</h2>
+
+<p>
+ შენი ჩახუტება, მოფერება, შეხება- ყველაზე კარგი რამ არის❤️
+
+</p>
+
+</div>
+
+
+
+
+<div class="card left">
+
+<h2>✨</h2>
+
+<p>
+შენ გახდი ჩემი ცხოვრების ყველაზე ლამაზი და მნიშნელოვანი ნაწილი,
+ ჩემი ბედნიერება და იმედი ❤️
+</p>
+
+</div>
+
+
+
+</div>
+
+
+
+
+<button onclick="location.href='love.html'">
+
+ 💗💗💗
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+document.addEventListener("mousemove",e=>{
+
+let h=document.createElement("div");
+
+h.className="heart";
+
+h.innerHTML="❤️";
+
+h.style.left=e.pageX+"px";
+
+h.style.top=e.pageY+"px";
+
+document.body.appendChild(h);
+
+
+setTimeout(()=>h.remove(),1000);
+
+
+});
+
+
+
+</script>
+
+
+
+</body>
+</html>

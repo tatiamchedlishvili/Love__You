@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Our Little Universe ❤️</title>
+
+  <link
+    rel="stylesheet"
+    href="css/memories.css?v=10"
+  >
+</head>
+
+<body>
+
+  <main class="sky" id="sky">
+
+    <!-- ნახევარმთვარე -->
+    <div class="moon"></div>
+
+    <!-- სათაური -->
+    <h1 class="title">
+      Our little universe ✨
+    </h1>
+
+    <!-- ფონური ვარსკვლავები -->
+    <div class="star-field" id="starField"></div>
+
+    <!-- ერთი საერთო ვარსკვლავი -->
+    <button
+      class="our-star"
+      id="ourStar"
+      type="button"
+      aria-label="Start our memories"
+    >
+
+      <span class="star-shape">★</span>
+
+      <span class="star-name">
+        Tatia &amp; George
+      </span>
+
+    </button>
+
+    <!-- საწყისი მინიშნება -->
+    <p class="hint" id="hint">
+      Touch our star ❤️
+    </p>
+
+    <!-- პროგრესი -->
+    <div class="progress" id="progress">
+      0 / 14
+    </div>
+
+    <!-- ფოტო/ვიდეოს ფანჯარა -->
+    <section
+      class="memory-box"
+      id="memoryBox"
+      aria-hidden="true"
+    >
+
+      <div class="memory-glow"></div>
+
+      <img
+        id="memoryImage"
+        src=""
+        alt="Our memory"
+      >
+
+      <video
+        id="memoryVideo"
+        muted
+        playsinline
+        controls
+      ></video>
+
+      <p
+        class="memory-caption"
+        id="memoryCaption"
+      ></p>
+
+      <div class="memory-controls">
+
+        <button
+          id="pauseButton"
+          type="button"
+        >
+          Pause ⏸️
+        </button>
+
+        <button
+          id="nextButton"
+          type="button"
+        >
+          Next ➜
+        </button>
+
+        <button
+          id="finaleButton"
+          type="button"
+        >
+          Finale ✨
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- ფინალი -->
+    <section class="final" id="final">
+
+      <div
+        class="final-particles"
+        id="finalParticles"
+      ></div>
+
+      <div class="photo-heart">
+
+        <img
+          src="images/1.jpg"
+          alt="Tatia and George"
+        >
+
+      </div>
+
+      <div class="final-text">
+
+        <h2 id="finalLineOne"></h2>
+
+        <h3 id="finalLineTwo"></h3>
+
+        <p
+          class="final-signature"
+          id="finalSignature"
+        >
+          — With all my love, Tatia ❤️
+        </p>
+
+        <button
+          class="restart-button"
+          id="restartButton"
+          type="button"
+        >
+          თავიდან ნახვა ✨
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="js/memories.js?v=10"></script>
+
+</body>
+</html>

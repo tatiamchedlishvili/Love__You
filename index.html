@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+
+<meta charset="UTF-8">
+<title>For My Love ❤️</title>
+
+<style>
+
+body{
+margin:0;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+background:linear-gradient(135deg,#ffd6df,#f5b7c8);
+font-family:'Segoe UI',sans-serif;
+overflow-x:hidden;
+}
+
+
+/* TITLE */
+
+.title{
+
+margin-top:25px;
+
+font-size:44px;
+
+color:white;
+
+font-family:cursive;
+
+letter-spacing:2px;
+
+z-index:10;
+
+text-shadow:
+0 0 15px white,
+0 0 35px rgba(255,255,255,.8);
+
+}
+
+
+
+/* CONTAINER */
+
+.container{
+
+width:90%;
+
+max-width:750px;
+
+text-align:center;
+
+color:white;
+
+}
+
+
+
+/* HEART PHOTO */
+
+.heart{
+
+width:360px;
+
+height:360px;
+
+margin:120px auto 60px;
+
+position:relative;
+
+animation:float 3s ease-in-out infinite;
+
+filter:
+drop-shadow(0 0 30px rgba(255,255,255,.8))
+drop-shadow(0 0 70px #ff6b9a);
+
+}
+
+
+
+/* PHOTO AS HEART */
+
+.heart img{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+
+/* მთავარი ნაწილი */
+
+clip-path:path(
+"M180 330 C40 230 0 150 0 90 C0 20 90 0 180 90 C270 0 360 20 360 90 C360 150 320 230 180 330"
+);
+
+
+}
+
+
+
+/* MOVING */
+
+@keyframes float{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+
+50%{
+
+transform:translateY(-25px);
+
+}
+
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+
+
+/* TEXT */
+
+
+.text{
+
+font-size:20px;
+
+line-height:1.8;
+
+margin-top:20px;
+
+}
+
+
+
+.love{
+
+display:block;
+
+margin-top:30px;
+
+font-size:32px;
+
+font-weight:bold;
+
+text-shadow:
+
+0 0 10px white,
+
+0 0 30px #ff4d6d;
+
+}
+
+
+
+/* BUTTON */
+
+
+.button{
+
+margin-top:40px;
+
+padding:16px 40px;
+
+border:none;
+
+border-radius:40px;
+
+background:white;
+
+color:#ff4d6d;
+
+font-size:18px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+
+
+.button:hover{
+
+transform:scale(1.1);
+
+box-shadow:0 0 30px white;
+
+}
+
+
+
+/* FALLING HEARTS */
+
+
+.fall{
+
+position:fixed;
+
+top:-30px;
+
+color:white;
+
+font-size:20px;
+
+animation:fall linear infinite;
+
+}
+
+
+
+@keyframes fall{
+
+
+from{
+
+transform:translateY(0);
+
+}
+
+
+to{
+
+transform:translateY(120vh);
+
+}
+
+
+}
+
+
+
+/* MOUSE SPARKLE */
+
+
+.sparkle{
+
+position:fixed;
+
+width:7px;
+
+height:7px;
+
+background:white;
+
+border-radius:50%;
+
+pointer-events:none;
+
+animation:spark 1s forwards;
+
+}
+
+
+
+@keyframes spark{
+
+
+0%{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+
+100%{
+
+opacity:0;
+
+transform:scale(3);
+
+}
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="title">
+
+ჩემს ჯორჯიკოს ❤️
+
+</div>
+
+
+
+<div class="container">
+
+
+<div class="heart">
+
+<img src="1p.jpg">
+
+</div>
+
+
+
+
+<div class="text">
+
+
+ჩემო სიყვარულო ❤️
+
+<br><br>
+
+ამ პატარა სივრცეში შევეცადე ჩამედო ჩემი უსაზღვრო სიყვარული,
+ყველა ემოცია და ყველა ის ლამაზი მომენტი,
+რომელიც შენთან ერთად შევქმენი, ბაიკო ❤️❤️❤️
+შენ ხარ ადამიანი, რომელმაც ჩემი ცხოვრება ყველაზე ლამაზი,
+თბილი და განსაკუთრებული გახადა.
+
+<br><br>
+
+მადლობა ყველაფრისთვის,
+შენი სიყვარულისთვის, ზრუნვისთვის, გაგებისთვის და ყველა იმ პატარა მომენტისთვის,
+რომელიც ჩემთვის ყველაზე ძვირფასია ❤️
+
+
+<span class="love">
+
+ყველაზე მეტად მიყვარხარ ბაი !!! ❤️
+
+</span>
+
+
+</div>
+
+
+
+<button class="button" onclick="location.href='story.html'">
+
+Start Our Story →
+
+</button>
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+/* MOUSE SPARKLES */
+
+document.addEventListener("mousemove",function(e){
+
+let s=document.createElement("div");
+
+s.className="sparkle";
+
+s.style.left=e.pageX+"px";
+
+s.style.top=e.pageY+"px";
+
+document.body.appendChild(s);
+
+
+setTimeout(()=>s.remove(),1000);
+
+
+});
+
+
+
+
+/* FALLING HEARTS */
+
+
+setInterval(()=>{
+
+
+let h=document.createElement("div");
+
+h.className="fall";
+
+h.innerHTML="❤️";
+
+h.style.left=Math.random()*100+"vw";
+
+h.style.fontSize=(15+Math.random()*25)+"px";
+
+h.style.animationDuration=(4+Math.random()*5)+"s";
+
+
+document.body.appendChild(h);
+
+
+setTimeout(()=>h.remove(),8000);
+
+
+},700);
+
+
+
+</script>
+
+
+</body>
+</html>

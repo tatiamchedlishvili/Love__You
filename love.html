@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+
+<meta charset="UTF-8">
+<title>Love Letter 💌</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+height:100vh;
+overflow:hidden;
+background:
+radial-gradient(circle at top,#29345f,#080b1c 60%,#02030a);
+font-family:Georgia,serif;
+}
+
+
+/* STARS */
+
+.star{
+position:absolute;
+width:3px;
+height:3px;
+background:white;
+border-radius:50%;
+animation:twinkle 3s infinite;
+}
+
+@keyframes twinkle{
+50%{
+opacity:1;
+transform:scale(1.5);
+}
+}
+
+
+
+/* TWO SPECIAL STARS */
+
+.love-star{
+
+position:absolute;
+width:25px;
+height:25px;
+
+background:#fff2b0;
+
+clip-path:polygon(
+50% 0%,
+61% 38%,
+100% 50%,
+61% 62%,
+50% 100%,
+39% 62%,
+0 50%,
+39% 38%
+);
+
+filter:
+drop-shadow(0 0 15px white)
+drop-shadow(0 0 40px #ffd86b);
+
+animation:shine 3s infinite;
+
+}
+
+
+.star1{
+top:18%;
+left:18%;
+}
+
+
+.star2{
+top:18%;
+left:23%;
+animation-delay:1s;
+}
+
+
+
+@keyframes shine{
+
+50%{
+transform:scale(1.5);
+}
+
+}
+
+
+
+
+/* MOON */
+
+.moon{
+
+position:absolute;
+
+top:8%;
+right:12%;
+
+width:130px;
+height:130px;
+
+background:#fff1a8;
+
+border-radius:50%;
+
+box-shadow:
+0 0 30px #fff1a8,
+0 0 80px rgba(255,240,150,.8);
+
+}
+
+
+.moon:after{
+
+content:"";
+
+position:absolute;
+
+width:130px;
+height:130px;
+
+background:#101630;
+
+border-radius:50%;
+
+top:-25px;
+left:35px;
+
+}
+
+
+
+
+/* ENVELOPE */
+
+.scene{
+
+position:absolute;
+
+top:50%;
+left:50%;
+
+transform:translate(-50%,-50%);
+
+animation:come 2s ease;
+
+}
+
+
+@keyframes come{
+
+from{
+opacity:0;
+transform:translate(-50%,100px) scale(.8);
+}
+
+to{
+opacity:1;
+transform:translate(-50%,-50%) scale(1);
+}
+
+}
+
+
+
+
+.envelope{
+
+width:360px;
+height:240px;
+
+background:#e8d1a6;
+
+border-radius:8px;
+
+position:relative;
+
+cursor:pointer;
+
+box-shadow:
+0 30px 90px black;
+
+}
+
+
+
+.flap{
+
+position:absolute;
+
+top:0;
+left:0;
+
+border-left:180px solid transparent;
+border-right:180px solid transparent;
+border-top:130px solid #c8aa72;
+
+z-index:3;
+
+}
+
+
+
+
+.seal{
+
+position:absolute;
+
+top:50%;
+left:50%;
+
+transform:translate(-50%,-50%);
+
+width:65px;
+height:65px;
+
+background:#8e1d3d;
+
+border-radius:50%;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+color:white;
+
+font-size:28px;
+
+z-index:5;
+
+}
+
+
+
+.open{
+
+position:absolute;
+
+bottom:25px;
+
+width:100%;
+
+text-align:center;
+
+font-size:38px;
+
+font-style:italic;
+
+color:#54391d;
+
+z-index:5;
+
+}
+
+
+
+/* LETTER */
+
+.letter{
+
+display:none;
+
+position:absolute;
+
+top:50%;
+left:50%;
+
+transform:translate(-50%,-50%);
+
+width:650px;
+max-width:90%;
+
+max-height:80vh;
+
+overflow:auto;
+
+padding:45px;
+
+background:#f5e3bd;
+
+color:#49331f;
+
+font-size:21px;
+
+line-height:1.8;
+
+box-shadow:
+0 30px 100px black;
+
+animation:paper 1.5s ease;
+
+}
+
+
+
+@keyframes paper{
+
+from{
+opacity:0;
+transform:translate(-50%,100px) scale(.8);
+}
+
+to{
+opacity:1;
+transform:translate(-50%,-50%) scale(1);
+}
+
+}
+
+
+
+.signature{
+
+text-align:right;
+
+margin-top:35px;
+
+font-size:30px;
+
+font-style:italic;
+
+}
+
+
+
+/* BUTTONS */
+
+
+button{
+
+font-family:Georgia,serif;
+
+}
+
+
+.skip,
+.next{
+
+margin-top:25px;
+
+padding:12px 35px;
+
+border:none;
+
+border-radius:30px;
+
+cursor:pointer;
+
+font-size:17px;
+
+}
+
+
+
+.skip{
+
+background:white;
+
+color:#8e1d3d;
+
+}
+
+
+
+.next{
+
+display:none;
+
+background:#8e1d3d;
+
+color:white;
+
+}
+
+
+
+.show{
+
+display:inline-block;
+
+animation:fade 1s;
+
+}
+
+
+
+@keyframes fade{
+
+from{
+opacity:0;
+}
+
+to{
+opacity:1;
+}
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="moon"></div>
+
+<div class="love-star star1"></div>
+<div class="love-star star2"></div>
+
+
+
+<div class="scene" id="scene">
+
+
+<div class="envelope" onclick="openLetter()">
+
+<div class="flap"></div>
+
+<div class="seal">
+❤️
+</div>
+
+<div class="open">
+გახსენი
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="letter" id="letter">
+
+
+<div id="text"></div>
+
+<div class="signature" id="signature"></div>
+
+
+<button class="skip" onclick="skipText()">
+Skip ✨
+</button>
+
+
+<button class="next" id="nextBtn" onclick="location.href='memories.html'">
+შემდეგი გვერდი 💖
+</button>
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+for(let i=0;i<160;i++){
+
+let s=document.createElement("div");
+
+s.className="star";
+
+s.style.left=Math.random()*100+"vw";
+
+s.style.top=Math.random()*100+"vh";
+
+s.style.animationDelay=Math.random()*3+"s";
+
+document.body.appendChild(s);
+
+}
+
+
+
+
+const message=`
+
+ჩემო სიყვარულო, ჩემო ბაიკო ❤️
+
+
+
+
+
+სიტყვები მართლა ძალიან პატარაა იმ გრძნობასთან შედარებით,
+
+რასაც შენ მიმართ ვგრძნობ, ბაი.  ყოველთვის გეუბნები ხოლმე , როგორ მიყვარხარ, მაგრამ ეგ სიტყვები მართლა ვერასდროს იქნება საკმარისი❤️
+
+ძალიან ბედნიერი მინდა იყო ჩემთან ერთად.
+
+შენ ხარ ჩემი ყველაზე ლამაზი ამბავი, რომელიც უფლის ნებით მოხდა💗
+
+უშენოდ არცერთი წამი და ჩემი ცხოვრების არც ერთი ეტაპი აღარ წარმომიდგენია და არც ვაპირებ წარმოდგენას💗 ყვეეელაზეე დიდი და მნიშნელოვანი ადგილი გიჭირავს ჩემს გულში, გონებაში და ცხოვრებაში💗
+
+მინდა იცოდე, რომ ყოველთვის ჩემი განსაკუთრებული ადამიანი იქნები,რომელთანაც ყველაზე ბედნიერად და მშვიდად ვიგრძენი თავი💗 შენი სუნი და ჩახუტება ყველაფერს მირჩევნია💗
+
+ რაც არ უნდა მოხდეს, რამდენი დროც არ უნდა გავიდეს. ვერაფერი მოხდება ცუდი,
+
+მაგრამ მაინც 💗 ყოველთვის შენ გვერდით ვიქნები, ყოველთვის💗 მე სულ შენი ბაიკო ვიქნები, შენ სულ ჩემი 💗
+
+
+
+ყველა ცხოვრებაში ყველაზე, ყველაზე მეტად მიყვარხარ ბაიკო ❤️❤️
+
+
+`;
+
+
+
+let i=0;
+let typing=true;
+
+
+
+function openLetter(){
+
+document.getElementById("scene").style.display="none";
+
+document.getElementById("letter").style.display="block";
+
+type();
+
+}
+
+
+
+function type(){
+
+if(i<message.length && typing){
+
+document.getElementById("text").innerHTML+=message.charAt(i);
+
+i++;
+
+setTimeout(type,45);
+
+}
+
+else{
+
+finish();
+
+}
+
+}
+
+
+
+function skipText(){
+
+typing=false;
+
+document.getElementById("text").innerHTML=message;
+
+finish();
+
+}
+
+
+
+function finish(){
+
+document.getElementById("signature").innerHTML=
+"სამუდამოდ შენი თათია ❤️";
+
+
+document.getElementById("nextBtn")
+.classList.add("show");
+
+}
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,1037 @@
+*{
+  box-sizing:border-box;
+}
+
+html,
+body{
+  width:100%;
+  height:100%;
+  margin:0;
+}
+
+body{
+  overflow:hidden;
+  background:#160b2c;
+  font-family:Georgia, "Times New Roman", serif;
+}
+
+button{
+  font-family:inherit;
+}
+
+/* =====================================
+   მთავარი ცა
+===================================== */
+
+.sky{
+  position:relative;
+
+  width:100%;
+  height:100vh;
+
+  overflow:hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 15%,
+      #d58ce6 0%,
+      #9958bc 25%,
+      #60347f 48%,
+      #321952 72%,
+      #150923 100%
+    );
+
+  transition:
+    background 2s ease,
+    filter 2s ease;
+}
+
+/* ნაზი ნისლი */
+
+.sky::before,
+.sky::after{
+  content:"";
+
+  position:absolute;
+
+  width:520px;
+  height:520px;
+
+  border-radius:50%;
+  filter:blur(110px);
+
+  opacity:.28;
+  pointer-events:none;
+
+  z-index:1;
+}
+
+.sky::before{
+  top:-190px;
+  left:-150px;
+
+  background:#ff9dce;
+
+  animation:
+    mistOne 13s ease-in-out infinite alternate;
+}
+
+.sky::after{
+  right:-180px;
+  bottom:-220px;
+
+  background:#91b4ff;
+
+  animation:
+    mistTwo 15s ease-in-out infinite alternate;
+}
+
+@keyframes mistOne{
+  from{
+    transform:translate(0,0) scale(1);
+  }
+
+  to{
+    transform:translate(140px,90px) scale(1.18);
+  }
+}
+
+@keyframes mistTwo{
+  from{
+    transform:translate(0,0) scale(1);
+  }
+
+  to{
+    transform:translate(-130px,-80px) scale(1.2);
+  }
+}
+
+/* =====================================
+   ნახევარმთვარე
+===================================== */
+
+.moon{
+  position:absolute;
+
+  top:72px;
+  right:90px;
+
+  width:125px;
+  height:125px;
+
+  border-radius:50%;
+
+  background:#fff2c4;
+
+  box-shadow:
+    0 0 25px rgba(255,255,255,.95),
+    0 0 60px rgba(255,225,146,.9),
+    0 0 110px rgba(255,212,115,.42);
+
+  z-index:5;
+  pointer-events:none;
+
+  animation:
+    moonFloat 6s ease-in-out infinite;
+
+  transition:
+    opacity 1.3s ease,
+    transform 1.3s ease;
+}
+
+.moon::after{
+  content:"";
+
+  position:absolute;
+
+  width:125px;
+  height:125px;
+
+  top:-18px;
+  left:39px;
+
+  border-radius:50%;
+
+  background:#63377e;
+}
+
+@keyframes moonFloat{
+  0%,
+  100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-11px);
+  }
+}
+
+/* =====================================
+   სათაური
+===================================== */
+
+.title{
+  position:absolute;
+
+  top:29px;
+  left:0;
+
+  width:100%;
+  margin:0;
+
+  text-align:center;
+
+  color:white;
+
+  font-size:42px;
+  font-style:italic;
+  font-weight:400;
+  letter-spacing:2px;
+
+  text-shadow:
+    0 0 10px white,
+    0 0 28px rgba(255,225,255,.9),
+    0 0 50px rgba(190,128,255,.58);
+
+  z-index:20;
+  pointer-events:none;
+
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+}
+
+/* =====================================
+   პატარა ვარსკვლავები
+===================================== */
+
+.star-field{
+  position:absolute;
+  inset:0;
+
+  z-index:3;
+  pointer-events:none;
+}
+
+.small-star{
+  position:absolute;
+
+  width:3px;
+  height:3px;
+
+  border-radius:50%;
+
+  background:white;
+
+  box-shadow:
+    0 0 7px white;
+
+  animation:
+    twinkle 2.5s ease-in-out infinite;
+}
+
+@keyframes twinkle{
+  0%,
+  100%{
+    opacity:.25;
+    transform:scale(.7);
+  }
+
+  50%{
+    opacity:1;
+    transform:scale(1.8);
+  }
+}
+
+/* =====================================
+   ერთი მთავარი ვარსკვლავი
+===================================== */
+
+.our-star{
+  position:absolute;
+
+  top:46%;
+  left:50%;
+
+  transform:
+    translate(-50%,-50%);
+
+  width:190px;
+  height:175px;
+
+  padding:0;
+  border:0;
+  outline:0;
+
+  background:transparent;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+
+  cursor:pointer;
+
+  color:white;
+
+  z-index:100;
+
+  transition:
+    transform .35s ease,
+    opacity 1.4s ease,
+    top 1.8s ease,
+    filter .35s ease;
+}
+
+/* ნამდვილი ვარსკვლავის ფორმა */
+
+.star-shape{
+  position:relative;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  width:120px;
+  height:120px;
+
+  color:#fff2a1;
+
+  font-size:115px;
+  line-height:1;
+
+  text-shadow:
+    0 0 9px white,
+    0 0 20px #fff4ae,
+    0 0 38px #ffb8f1,
+    0 0 70px #ffd466;
+
+  animation:
+    starPulse 2.2s ease-in-out infinite;
+}
+
+.star-shape::after{
+  content:"";
+
+  position:absolute;
+
+  width:20px;
+  height:20px;
+
+  border-radius:50%;
+
+  background:white;
+
+  box-shadow:
+    0 0 15px white,
+    0 0 32px #fff2ad;
+
+  animation:
+    starCore 1.5s ease-in-out infinite;
+}
+
+.star-name{
+  display:block;
+
+  margin-top:11px;
+
+  min-width:180px;
+
+  color:white;
+  text-align:center;
+  white-space:nowrap;
+
+  font-size:22px;
+  font-weight:bold;
+
+  text-shadow:
+    0 0 9px white,
+    0 0 20px #dda6ff,
+    0 0 34px #c476e4;
+
+  pointer-events:none;
+}
+
+.our-star:hover{
+  transform:
+    translate(-50%,-50%)
+    scale(1.14);
+}
+
+.our-star:active{
+  transform:
+    translate(-50%,-50%)
+    scale(.96);
+}
+
+@keyframes starPulse{
+  0%,
+  100%{
+    transform:scale(1) rotate(0deg);
+    opacity:.94;
+  }
+
+  50%{
+    transform:scale(1.15) rotate(4deg);
+    opacity:1;
+  }
+}
+
+@keyframes starCore{
+  0%,
+  100%{
+    transform:scale(.75);
+    opacity:.6;
+  }
+
+  50%{
+    transform:scale(1.4);
+    opacity:1;
+  }
+}
+
+/* ვარსკვლავის აფეთქება */
+
+.our-star.started{
+  pointer-events:none;
+
+  animation:
+    starLaunch 1.4s ease forwards;
+}
+
+@keyframes starLaunch{
+  0%{
+    opacity:1;
+
+    transform:
+      translate(-50%,-50%)
+      scale(1);
+  }
+
+  55%{
+    opacity:1;
+
+    transform:
+      translate(-50%,-60%)
+      scale(1.45);
+  }
+
+  100%{
+    opacity:0;
+
+    transform:
+      translate(-50%,-95%)
+      scale(2.8);
+  }
+}
+
+/* =====================================
+   მინიშნება და პროგრესი
+===================================== */
+
+.hint{
+  position:absolute;
+
+  bottom:57px;
+  left:0;
+
+  width:100%;
+  margin:0;
+
+  color:white;
+  text-align:center;
+
+  font-size:23px;
+  letter-spacing:1px;
+
+  text-shadow:
+    0 0 9px white,
+    0 0 22px #cf95f5;
+
+  z-index:20;
+  pointer-events:none;
+
+  animation:
+    hintFloat 2.2s ease-in-out infinite;
+
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+}
+
+@keyframes hintFloat{
+  0%,
+  100%{
+    opacity:.7;
+    transform:translateY(0);
+  }
+
+  50%{
+    opacity:1;
+    transform:translateY(-7px);
+  }
+}
+
+.progress{
+  position:absolute;
+
+  top:104px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  color:rgba(255,255,255,.9);
+
+  font-size:15px;
+  letter-spacing:2px;
+
+  text-shadow:
+    0 0 10px white;
+
+  z-index:20;
+
+  opacity:0;
+
+  transition:opacity .8s ease;
+}
+
+.progress.show{
+  opacity:1;
+}
+
+/* =====================================
+   ფოტო და ვიდეო
+===================================== */
+
+.memory-box{
+  display:none;
+
+  position:fixed;
+
+  top:50%;
+  left:50%;
+
+  transform:
+    translate(-50%,-50%);
+
+  width:min(510px,91vw);
+
+  padding:20px;
+
+  border:1px solid rgba(255,255,255,.8);
+  border-radius:27px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.98),
+      rgba(244,226,255,.98)
+    );
+
+  box-shadow:
+    0 30px 100px rgba(0,0,0,.68),
+    0 0 40px rgba(255,255,255,.65),
+    0 0 80px rgba(196,120,255,.42);
+
+  overflow:hidden;
+
+  z-index:9999;
+
+  animation:
+    memoryOpen .7s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+.memory-box.open{
+  display:block;
+}
+
+.memory-glow{
+  position:absolute;
+
+  inset:-60%;
+
+  background:
+    conic-gradient(
+      transparent,
+      rgba(184,110,255,.25),
+      transparent,
+      rgba(255,134,197,.24),
+      transparent
+    );
+
+  animation:
+    glowRotate 7s linear infinite;
+
+  pointer-events:none;
+}
+
+@keyframes glowRotate{
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+.memory-box img,
+.memory-box video{
+  position:relative;
+
+  z-index:2;
+
+  display:none;
+
+  width:100%;
+  height:405px;
+
+  border-radius:18px;
+
+  object-fit:cover;
+  object-position:center;
+
+  background:#e5dce8;
+
+  box-shadow:
+    0 12px 35px rgba(0,0,0,.28);
+}
+
+.memory-box img.visible,
+.memory-box video.visible{
+  display:block;
+}
+
+.memory-caption{
+  position:relative;
+
+  z-index:2;
+
+  margin:16px 0 0;
+
+  color:#6f4282;
+  text-align:center;
+
+  font-size:19px;
+  font-style:italic;
+}
+
+.memory-controls{
+  position:relative;
+
+  z-index:3;
+
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+
+  gap:10px;
+
+  margin-top:16px;
+}
+
+.memory-controls button{
+  padding:10px 18px;
+
+  border:0;
+  border-radius:25px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #764190,
+      #b765cb
+    );
+
+  color:white;
+
+  font-size:15px;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 8px 20px rgba(79,35,102,.3);
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+.memory-controls button:hover{
+  transform:
+    translateY(-2px)
+    scale(1.04);
+
+  box-shadow:
+    0 11px 28px rgba(79,35,102,.45);
+}
+
+@keyframes memoryOpen{
+  from{
+    opacity:0;
+
+    transform:
+      translate(-50%,-42%)
+      scale(.68)
+      rotate(-3deg);
+  }
+
+  to{
+    opacity:1;
+
+    transform:
+      translate(-50%,-50%)
+      scale(1)
+      rotate(0deg);
+  }
+}
+
+/* =====================================
+   ფინალი
+===================================== */
+
+.final{
+  display:none;
+
+  position:fixed;
+  inset:0;
+
+  z-index:9000;
+
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+
+  text-align:center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(150,77,181,.22),
+      rgba(10,4,25,.88)
+    );
+
+  opacity:0;
+}
+
+.final.show{
+  display:flex;
+
+  animation:
+    finalFade 2s ease forwards;
+}
+
+.final-particles{
+  position:absolute;
+  inset:0;
+
+  overflow:hidden;
+  pointer-events:none;
+}
+
+.final-particle{
+  position:absolute;
+
+  top:50%;
+  left:50%;
+
+  animation:
+    particleExplosion 2.8s ease-out forwards;
+}
+
+@keyframes particleExplosion{
+  from{
+    opacity:1;
+
+    transform:
+      translate(-50%,-50%)
+      scale(.2)
+      rotate(0deg);
+  }
+
+  to{
+    opacity:0;
+
+    transform:
+      translate(
+        calc(-50% + var(--x)),
+        calc(-50% + var(--y))
+      )
+      scale(1.7)
+      rotate(300deg);
+  }
+}
+
+.photo-heart{
+  position:relative;
+
+  width:345px;
+  height:310px;
+
+  opacity:0;
+
+  filter:
+    drop-shadow(0 0 22px white)
+    drop-shadow(0 0 48px #ff8fc2)
+    drop-shadow(0 0 90px #b85eff);
+
+  animation:
+    heartReveal 2s 1s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+.photo-heart img{
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+  object-position:center;
+
+  clip-path:polygon(
+    50% 94%,
+    8% 56%,
+    1% 40%,
+    3% 23%,
+    14% 9%,
+    29% 4%,
+    42% 12%,
+    50% 26%,
+    58% 12%,
+    71% 4%,
+    86% 9%,
+    97% 23%,
+    99% 40%,
+    92% 56%
+  );
+}
+
+@keyframes heartReveal{
+  from{
+    opacity:0;
+
+    transform:
+      scale(.1)
+      rotate(-18deg);
+  }
+
+  65%{
+    opacity:1;
+
+    transform:
+      scale(1.15)
+      rotate(3deg);
+  }
+
+  to{
+    opacity:1;
+
+    transform:
+      scale(1)
+      rotate(0deg);
+  }
+}
+
+.final-text{
+  position:relative;
+
+  z-index:3;
+
+  width:min(850px,90vw);
+
+  margin-top:24px;
+
+  color:white;
+}
+
+.final-text h2{
+  min-height:45px;
+  margin:0;
+
+  font-size:34px;
+  font-weight:400;
+
+  text-shadow:
+    0 0 10px white,
+    0 0 28px #cda0ff;
+}
+
+.final-text h3{
+  min-height:48px;
+
+  margin:12px 0 0;
+
+  font-size:39px;
+  font-weight:400;
+
+  text-shadow:
+    0 0 10px white,
+    0 0 30px #ff9aca,
+    0 0 58px #ff64a9;
+}
+
+.final-signature{
+  margin:25px 0 0;
+
+  font-size:25px;
+  font-style:italic;
+
+  opacity:0;
+
+  text-shadow:
+    0 0 10px white,
+    0 0 22px #dda4ff;
+
+  transition:opacity 1.5s ease;
+}
+
+.final-signature.show{
+  opacity:1;
+}
+
+.restart-button{
+  margin-top:28px;
+  padding:13px 35px;
+
+  border:1px solid rgba(255,255,255,.75);
+  border-radius:30px;
+
+  background:rgba(255,255,255,.16);
+
+  backdrop-filter:blur(12px);
+
+  color:white;
+  font-size:17px;
+
+  cursor:pointer;
+
+  opacity:0;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.25),
+    0 0 25px rgba(255,255,255,.18);
+
+  transition:
+    opacity 1.5s ease,
+    transform .3s ease,
+    background .3s ease;
+}
+
+.restart-button.show{
+  opacity:1;
+}
+
+.restart-button:hover{
+  transform:scale(1.08);
+
+  background:
+    rgba(255,255,255,.28);
+}
+
+@keyframes finalFade{
+  from{
+    opacity:0;
+  }
+
+  to{
+    opacity:1;
+  }
+}
+
+/* ფინალისას ძველი ელემენტები ქრება */
+
+.sky.final-mode .title,
+.sky.final-mode .hint,
+.sky.final-mode .progress,
+.sky.final-mode .moon,
+.sky.final-mode .our-star{
+  opacity:0;
+}
+
+/* =====================================
+   ტელეფონის ვერსია
+===================================== */
+
+@media (max-width:700px){
+
+  .title{
+    top:22px;
+    font-size:29px;
+  }
+
+  .moon{
+    top:78px;
+    right:20px;
+
+    width:90px;
+    height:90px;
+  }
+
+  .moon::after{
+    width:90px;
+    height:90px;
+
+    top:-12px;
+    left:29px;
+  }
+
+  .our-star{
+    top:46%;
+
+    width:170px;
+    height:165px;
+  }
+
+  .star-shape{
+    width:100px;
+    height:100px;
+
+    font-size:96px;
+  }
+
+  .star-name{
+    font-size:18px;
+  }
+
+  .hint{
+    bottom:40px;
+    font-size:18px;
+  }
+
+  .progress{
+    top:82px;
+    font-size:13px;
+  }
+
+  .memory-box{
+    width:92vw;
+    padding:15px;
+  }
+
+  .memory-box img,
+  .memory-box video{
+    height:54vh;
+    max-height:420px;
+  }
+
+  .memory-controls{
+    gap:8px;
+  }
+
+  .memory-controls button{
+    padding:9px 13px;
+
+    font-size:13px;
+  }
+
+  .photo-heart{
+    width:270px;
+    height:245px;
+  }
+
+  .final-text h2{
+    font-size:24px;
+  }
+
+  .final-text h3{
+    font-size:28px;
+  }
+
+  .final-signature{
+    font-size:20px;
+  }
+}
